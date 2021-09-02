@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <h3>Search Results</h3>
+     -->
+        
+        <div class="card">
+           
+            <div class="card-header">  Search Results
+             <div><button class="btn-sm btn-success" id="button1" (click)="btnnav()"> HOME</button></div>
+            </div>
+            <div class="card-body">
+
+                <form [formGroup]="searchresultsForm" autocomplete="off">
+                    <div class="row">
+
+                        <div class="form-group col-md-12">
+
+                            <table class="labelfont table table-hover" *ngIf="!!flightlist.length">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>Flight Names</th>
+                                        <th>Fight Number</th>
+                                        <th>Depart From</th>
+                                        <th>Goto</th>
+                                        <th>Depart Date</th>
+                                        <th>Return Date</th>
+                                        <th>Price</th>
+                                        <th>Passenger</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let searchlist of flightlist ">
+                                        
+                                        <td>{{searchlist.flightnames}}</td>
+                                        <td>{{searchlist.flightnumber}}</td>
+                                        <td>{{searchlist.departfrom}}</td>
+                                        <td>{{searchlist.gotolocation}}</td>
+                                        <td>{{searchlist.departdate}}</td>
+                                        <td>{{searchlist.returndate}}</td>
+                                        <th>{{searchlist.price}}</th>
+                                        
+                                        <th>{{searchlist.passengers}}</th>
+                                        <td>
+                                            <button class="btn-sm btn-success" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal"
+                                                (click)="putdetails(searchlist)">View Fares</button>
+                                            </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class=row>
+
+
+                        <div class="col-md-4">
+                            <button class=" btn btn-danger" (click)="btnClickBack()">Back</button>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+    <router-outlet></router-outlet>
+</body>
+
+</html>
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Fares</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               
+                
+                <form [formGroup]="viewFaresForm" (ngSubmit)="handleSubmit()" autocomplete="off">
+                    <div class="row">
+                    <div class="form-group col-md-3">
+                     <!-- <label class="labelfont">Flight Name</label> -->
+                        <input type="text" class="form-control" formControlName="flightnames" id="input3" placeholder="Flight Name">
+                       </div>
+                     
+                       <div class="form-group col-md-4">
+                        <!-- <label class="labelfont">Flight Name</label> -->
+                           <input type="text" class="form-control" formControlName="departfrom" id="input3" placeholder="Depart From">
+                          </div>
+                        <!-- <div> <i class="bi bi-arrow-left-right"></i></div>  -->
+                          <div class="form-group col-md-4">
+                            <!-- <label class="labelfont">Flight Name</label> -->
+                               <input type="text" class="form-control" formControlName="gotolocation" id="input3" placeholder="Go to">
+                              </div>
+                            </div>
+                    <table class="labelfont table table-hover" >
+                        <thead>
+                            <tr>
+                              
+                                <th>Checked bags</th>
+                                <th>Hand bags</th>
+                                <th>Meal</th>
+                                <th>Totol Prices</th>
+
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let lists of flightlist">
+
+                                <td>{{lists.checkedbags}}</td>
+                                <td>{{lists.handbags}}</td>
+                                <td><i class='fas fa-hamburger' style='font-size:24px'></i></td>
+
+                                <td>{{lists.bckagePrice}}</td>
+                                <td><button class="btn btn-info" data-bs-dismiss="modal" 
+                                    (click)="btnClick()"
+                                   
+                                    >Book Now</button></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <app-ticket-booking [parentData]="parentPost" ></app-ticket-booking> -->

@@ -1,0 +1,194 @@
+<div class="container">
+  <div class="d-flex justify-content-between mb-3"></div>
+
+  <div class="card">
+    <div class="card-header"> Schedule Details
+      <button type="button" (click)="clickAddButton()" id="button1" class="btn btn-success" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        Add Schedule
+      </button>
+
+    </div>
+    <div class="card-body">
+      <div>
+        <form [formGroup]="managescheduleform" (ngSubmit)="handleSubmit()" autocomplete="off">
+          <div class="row">
+
+            <div class="form-group col-md-12">
+
+              <table class="labelfont table table-hover">
+                <thead>
+                  <tr>
+                    <th>Airline Name</th>
+                    <th>FlightNumber</th>
+                    <th>Arrival</th>
+                    <th>Departure</th>
+
+                    <th>Scheduled Days</th>
+                    <th>Instrument</th>
+                    <th>Price</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let listb of schedulelist">
+
+                    <td>{{listb.flightnames}}</td>
+                    <td>{{listb.flightnumber}}</td>
+
+                    <td>{{listb.fromlocation}}</td>
+                    <td>{{listb.tolocation}}</td>
+
+                    <td>{{listb.scheduleddays}}</td>
+                    <td>{{listb.instrument}}</td>
+                    <td>{{listb.price}}</td>
+
+                    <td><button class="btn btn-danger" (click)="deleteschedule(listb.id)">Delete</button></td>
+                    <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="putdetails(listb)">Edit</button> </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Schedule</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addscheduleform" (ngSubmit)="handleSubmit()" autocomplete="off">
+          <div class="row">
+            <div class="row mb-4">
+              <div class="form-group col-md-6">
+                <label class="labelfont">Airline Name</label>
+
+                <input type="text" class="form-control" formControlName="flightnames" id="input3"
+                  placeholder="Airline Name">
+                <span *ngIf="isSubmitted && fc().flightnames.errors?.required" class="text-danger">Flight Name
+                  Required</span>
+
+              </div>
+            </div>
+            <hr />
+
+            <div class="row mb-4">
+              <div class="form-group col-md-6">
+                <label class="labelfont">FlightNumber</label>
+
+                <input type="text" class="form-control" formControlName="flightnumber" id="input3"
+                  placeholder="flightnumber">
+                <span *ngIf="isSubmitted && fc().flightnumber.errors?.required" class="text-danger">Flight number
+                  Required</span>
+
+              </div>
+            </div>
+            <hr />
+            <div class="row mb-4">
+              <div class="form-group col-md-6">
+                <label class="labelfont">To location</label>
+
+                <input type="text" class="form-control" formControlName="tolocation" id="input3"
+                  placeholder="To Location">
+                <span *ngIf="isSubmitted && fc().tolocation.errors?.required" class="text-danger">To Location
+                  Required</span>
+
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="form-group col-md-6">
+                <label class="labelfont">From location</label>
+                <input type="text" class="form-control" formControlName="fromlocation" rows="3"
+                  placeholder="From location">
+                <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                <span *ngIf="isSubmitted && fc().fromlocation.errors?.required" class="text-danger">From location</span>
+
+              </div>
+            </div>
+            <hr />
+
+            <div class="row mb-4">
+              <div class="form-group col-md-6">
+                <label class="labelfont">Start date</label>
+                <input type="date" class="form-control" formControlName="startdate" rows="3">
+                <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                <span *ngIf="isSubmitted && fc().startdate.errors?.required" class="text-danger">startdate</span>
+
+              </div>
+            </div>
+            <hr />
+            <div class="row mb-4">
+              <div class="form-group col-md-6">
+                <label class="labelfont">End Date</label>
+                <input type="date" class="form-control" formControlName="enddate" rows="3">
+                <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                <span *ngIf="isSubmitted && fc().enddate.errors?.required" class="text-danger">enddateId</span>
+
+              </div>
+            </div>
+            <hr />
+            <div class="form-group">
+              <label for="scheduleddays">Scheduled Days:</label>
+              <select name="scheduleddays" id="scheduleddays" class="form-control" formControlName="scheduleddays"
+                required>
+                <option value="0" selected>--Schedule Days--</option>
+                <option value="daily">Daily</option>
+                <option value="weekdays">Week Days</option>
+                <option value="weekends">Week Ends</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
+              </select>
+
+            </div>
+
+            <div class="row mb-4">
+
+              <div class="form-group col-md-6">
+                <label for="instrument">Instrument:</label>
+                <select name="instrument" id="instrument" class="form-control" formControlName="instrument" required>
+                  <option value="0" selected>--Instrument--</option>
+                  <option value="A320">A320</option>
+                  <option value="A320neo">A320 neo</option>
+                </select>
+              </div>
+            </div>
+            <hr />
+
+            <div class="row mb-4">
+              <div class="form-group col-md-6">
+                <label class="labelfont">Price</label>
+                <input class="form-control" formControlName="price" rows="3" placeholder="Price" />
+                <span *ngIf="isSubmitted && fc().price.errors?.required" class="text-danger">Price Required</span>
+
+              </div>
+            </div>
+            <hr />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" *ngIf="showaddd" (click)="postdetails()" class="btn btn-primary">Add</button>
+        <button type="button" *ngIf="showupdate" (click)="updatedetails()" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

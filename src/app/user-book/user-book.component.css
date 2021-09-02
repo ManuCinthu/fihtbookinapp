@@ -1,0 +1,41 @@
+.container .card .card-header{
+  font-size :30px;
+  font-style: bold;
+  color: rgb(210, 30, 39);
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+input[type="radio"] {
+  margin-right: -3px;
+}
+
+
+.container .labelfont{
+  font-size :20px;
+  font-family: 'Times New Roman', Times, serif;
+  color: red;
+
+}
+
+  .container .card{
+      background-color:cornsilk;
+  }
+
+  .container .btn btn-danger{
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+  }
+
+  .passanger-class-input .passanger-class-list {
+    position: absolute;
+    width: 445px;
+    z-index: 9;
+    right: 0;
+    margin-top: 3px;
+}
+
+.u-text-left {
+  text-align: left;
+}

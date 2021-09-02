@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <title>Document</title> -->
+</head>
+<body>
+  <div class="container">
+    <div class="d-flex justify-content-between mb-3"></div>
+        <h3>Add Airlines</h3>
+    <div class="card">
+    <div class="card-header"> Add Airlines</div>
+        <div class="card-body">
+            <div>
+            <form  [formGroup]="airlineFormvalidate"  (ngSubmit)="handleSubmit()" autocomplete="off">
+                <div class="row">
+                    <div class="row mb-4">
+                    <div class="form-group col-md-6">
+                        <label class="labelfont">Airline Name</label>
+                       
+                          <input type="text" class="form-control" formControlName="airlinename" id="input3" placeholder="Number of Passenger(s)">
+                          <span *ngIf="isSubmitted && fc().airlinename.errors?.required" class="text-danger">AirLine Name Required</span>
+                        
+                      </div>
+                    </div>
+                      <hr/>
+                      <div class="row mb-4">
+                      <div class="form-group col-md-6">
+                        <label class="labelfont" for="customFile">Upload Log</label>
+                        
+                            <input type="file" class="form-control" id="customFile" />
+                          <!-- <span *ngIf="isSubmitted && fc().logoname.errors?.required" class="text-danger">Logo Required</span>  -->
+                      </div>
+                      </div>
+                      <hr/>
+                      <div class="row mb-4">
+                      <div class="form-group col-md-6">
+                        <label class="labelfont">Contact Number</label>
+                       
+                          <input type="number" class="form-control" formControlName="contactnumber" id="input3" placeholder="Contact Number(s)">
+                          <span *ngIf="isSubmitted && fc().contactnumber.errors?.required" class="text-danger">Contact Number Required</span>
+                       
+                      </div>
+                      </div>
+                      <hr/>
+                      <div class="row mb-4">
+                      <div class="form-group col-md-6">
+                        <label class="labelfont">Contact Address</label>
+                        <textarea class="form-control" formControlName="address" rows="3" placeholder="Contact Address"></textarea>
+                          <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                          <span *ngIf="isSubmitted && fc().address.errors?.required" class="text-danger">Address Required</span>
+                        
+                      </div>
+                      </div>
+                      <hr/>  
+                </div>
+
+                <div class="form-group row">
+                    <div class="mt-3 text-center">
+                      <button type="button" 
+                      [disabled]="airlineFormvalidate.invalid"
+                       class="btn btn-danger" 
+                      (click)="btnClick();"
+                       >Add New AirLine</button>
+                     
+                    </div>
+                  </div>
+            </form>
+        </div>
+
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
+</body>
+</html>
+
+
+
+
+
+
+

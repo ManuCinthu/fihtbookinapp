@@ -1,0 +1,234 @@
+{
+  "flightlist": [
+    {
+      "flightnames": "Indigo",
+      "departdate": "25-10-2021",
+      "returndate": "30-10-2021",
+      "duration": "2h 30m",
+      "price": 3500,
+      "departfrom": "Bangalore",
+      "gotolocation": "Chennai",
+      "passengers": 3,
+      "flightnumber": "8212C",
+      "checkedbags": "15kgs",
+      "bckagePrice": 8000,
+      "handbags": "7kgs",
+      "id": 1
+    },
+    {
+      "flightnames": "FlyHigh",
+      "departdate": "25-10-2021",
+      "returndate": "30-10-2021",
+      "duration": "1h 30m",
+      "price": 5000,
+      "departfrom": "Bangalore",
+      "gotolocation": "Chennai",
+      "passengers": 3,
+      "flightnumber": "8212C",
+      "checkedbags": "10kgs",
+      "handbags": "5kgs",
+      "bckagePrice": 7000,
+      "id": 2
+    },
+    {
+      "flightnames": "SpiceJet",
+      "departdate": "25-10-2021",
+      "returndate": "30-10-2021",
+      "duration": "1h 35m",
+      "price": 5000,
+      "departfrom": "Bangalore",
+      "gotolocation": "Chennai",
+      "passengers": 3,
+      "bckagePrice": 6700,
+      "flightnumber": "8212C",
+      "checkedbags": "15kgs",
+      "handbags": "7kgs",
+      "id": 3
+    },
+    {
+      "flightnames": "Kingfisher",
+      "departdate": "25-10-2021",
+      "returndate": "30-10-2021",
+      "duration": "2h 30m",
+      "price": 3080,
+      "bckagePrice": 6700,
+      "departfrom": "Bangalore",
+      "gotolocation": "Chennai",
+      "passengers": 3,
+      "flightnumber": "8212C",
+      "checkedbags": "10kgs",
+      "handbags": "9kgs",
+      "id": 4
+    }
+  ],
+  "viewfarelist": [
+    {
+      "id": 1,
+      "Checkedbags": "15kgs",
+      "Handbags": "7kgs",
+      "price": 5000
+    },
+    {
+      "id": 2,
+      "Checkedbags": "15kgs",
+      "Handbags": "7kgs",
+      "price": 5000
+    },
+    {
+      "id": 3,
+      "Checkedbags": "15kgs",
+      "Handbags": "7kgs",
+      "price": 5000
+    }
+  ],
+  "bookinghistory": [
+    {
+      "id": 1,
+      "flightnames": "Indigo",
+      "flightnumber": "8212C",
+      "departfrom": "Bangalore",
+      "gotolocation": "Chennai",
+      "price": 0,
+      "passengers": 3,
+      "duration": "2h 30m",
+      "returndate": "30-10-2021",
+      "departdate": "25-10-2021",
+      "bckagePrice": 8000,
+      "checkedbags": "15kgs",
+      "handbags": "7kgs"
+    },
+    {
+      "id": 2,
+      "flightnames": "FlyHigh",
+      "flightnumber": "8212C",
+      "departfrom": "Bangalore",
+      "gotolocation": "Chennai",
+      "price": 0,
+      "passengers": 3,
+      "duration": "1h 30m",
+      "returndate": "30-10-2021",
+      "departdate": "25-10-2021",
+      "bckagePrice": 7000,
+      "checkedbags": "10kgs",
+      "handbags": "5kgs"
+    }
+  ],
+  "managebooking": [
+    {
+      "id": 1,
+      "flightnames": "Indigo",
+      "flightnumber": "8212C",
+      "departfrom": "Bangalore",
+      "gotolocation": "Chennai",
+      "price": 0,
+      "passengers": 3,
+      "duration": "2h 30m",
+      "returndate": "30-10-2021",
+      "departdate": "25-10-2021",
+      "bckagePrice": 8000,
+      "checkedbags": "15kgs",
+      "handbags": "7kgs"
+    },
+    {
+      "id": 2,
+      "flightnames": "FlyHigh",
+      "flightnumber": "8212C",
+      "departfrom": "Bangalore",
+      "gotolocation": "Chennai",
+      "price": 0,
+      "passengers": 3,
+      "duration": "1h 30m",
+      "returndate": "30-10-2021",
+      "departdate": "25-10-2021",
+      "bckagePrice": 7000,
+      "checkedbags": "10kgs",
+      "handbags": "5kgs"
+    }
+  ],
+  "manageairlines": [
+    {
+      "airlinename": "Indigo",
+      "contactnumber": "123456789",
+      "contactaddress": "Bangalore",
+      "id": 1
+    },
+    {
+      "airlinename": "Fightjet",
+      "contactnumber": "123456789",
+      "contactaddress": 2500,
+      "id": 2
+    },
+    {
+      "airlinename": "Flyhigh",
+      "contactnumber": "123456789",
+      "contactaddress": 2050,
+      "id": 3
+    },
+    {
+      "airlinename": "Gowith",
+      "contactnumber": "123456789",
+      "contactaddress": 2000,
+      "id": 4
+    }
+  ],
+  "airlinelist": [
+    {
+      "id": 1,
+      "airlinename": "Indigo",
+      "contactnumber": 12345678978,
+      "flightnumber": "6212Cty",
+      "primarylocation": "Bangalore",
+      "destination": "Chennai",
+      "arrivaltime": "07:36",
+      "departuretime": "07:36"
+    },
+    {
+      "id": 9,
+      "airlinename": "finaltestupdates",
+      "contactnumber": 1234567898,
+      "flightnumber": "jetairways",
+      "primarylocation": "bangalore",
+      "destination": "delhi",
+      "arrivaltime": "04:49",
+      "departuretime": "08:49"
+    }
+  ],
+  "manageschedule": [
+    {
+      "id": 1,
+      "flightnumber": "ERC56",
+      "fromlocation": "Bangalore",
+      "tolocation": "Chennai",
+      "startdate": "20/09/2021",
+      "enddate": "25/09.2021",
+      "scheduleddays": "weekdays",
+      "instrument": "AS456",
+      "price": 2300,
+      "flightname": "Skynet"
+    },
+    {
+      "id": 2,
+      "flightnumber": "ERC56",
+      "fromlocation": "Bangalore",
+      "tolocation": "Chennai",
+      "startdate": "20/09/2021",
+      "enddate": "25/09.2021",
+      "scheduleddays": "weekdays",
+      "instrument": "AS456",
+      "price": 2300,
+      "flightname": "Skynet"
+    },
+    {
+      "flightnumber": "err456",
+      "airlinename": "Fijjy",
+      "fromlocation": "bangalore",
+      "tolocation": "chennai",
+      "startdateId": "2021-08-26",
+      "enddateId": "2021-08-27",
+      "scheduleddays": "tuesday",
+      "instrument": "A320",
+      "price": "700",
+      "id": 3
+    }
+  ]
+}

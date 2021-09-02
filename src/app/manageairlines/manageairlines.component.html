@@ -1,0 +1,242 @@
+<div class="btn-group">
+    <div class="container">
+      <div class="d-flex justify-content-between mb-12"></div>
+      <!-- <div><button class="btn-sm btn-success" id="button1" (click)="btnnav()"> HOME</button></div> -->
+      <div class="card">
+        <div class="card-header"> Manage Airlines 
+  <div>
+    <button type="button" (click)="clickAddButton()" id="button1"class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add Airline
+    </button>
+  </div>        <!-- <button  (click)="open(mymodal)" class="btn btn-lg btn-outline-primary">Add Airline</button> -->
+ 
+       
+        </div>
+        <div class="card-body">
+          <div>
+            <form [formGroup]="manageairlineFormvalidate" autocomplete="off">
+              <div class="row">
+  
+                <div class="form-group col-md-12">
+  
+                  <table class="labelfont table table-hover">
+                    <thead>
+                      <tr>
+                        <!-- <th>Id</th> -->
+                        <th>Airline Name</th>
+                        <th>AirLine Number</th>
+                        <th>Primary Location</th>
+                        <th>Destination Location</th>
+                        <th>Arrival Time</th>
+                        <th>Departure Time</th>
+                        <th>Actions</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let listb of fetcheddetails">
+                        <!-- <td>{{listb.id}}</td> -->
+                        <td>{{listb.airlinename}}</td>
+                        <td>{{listb.flightnumber}}</td>
+                        
+                        <td>{{listb.primarylocation}}</td>
+                        <td>{{listb.destination}}</td>
+                        <td>{{listb.arrivaltime}}</td>
+                        <td>{{listb.departuretime}}</td>
+                    
+                        <td><button class="btn btn-danger"(click)="deleteflightdata(listb)"
+                          >Block</button>  </td>
+                          
+                          <td><button class="btn btn-primary"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            (click)="putdetails(listb)"
+                            >Edit</button>  </td>
+  
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </form>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Airline</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="addairlineFormvalidate"  (ngSubmit)="handleSubmit()" autocomplete="off">
+              <div class="row">
+                <div class="row mb-4">
+                <div class="form-group col-md-6">
+                    <label class="labelfont">Airline Name</label>
+                   
+                      <input type="text" class="form-control" formControlName="airlinename" id="input3" placeholder="Airline Name">
+                      <span *ngIf="isSubmitted && fc().airlinename.errors?.required" class="text-danger">AirLine Name Required</span>
+                    
+                  </div>
+                </div>
+                  <hr/>
+                  <div class="row mb-4">
+                  <div class="form-group col-md-6">
+                    <label class="labelfont">Contact Number</label>
+                   
+                      <input type="number" class="form-control" formControlName="contactnumber" id="input3" placeholder="Contact Number(s)">
+                      <span *ngIf="isSubmitted && fc().contactnumber.errors?.required" class="text-danger">Contact Number Required</span>
+                   
+                  </div>
+                  </div>
+                  <hr/>
+                  <div class="row mb-4">
+                    <div class="form-group col-md-6">
+                      <label class="labelfont">Flight Number</label>
+                     
+                        <input type="text" class="form-control" formControlName="flightnumber" id="input3" placeholder="Flight Number(s)">
+                        <span *ngIf="isSubmitted && fc().flightnumber.errors?.required" class="text-danger">Flight Number Required</span>
+                     
+                    </div>
+                    </div>
+                  <div class="row mb-4">
+                  <div class="form-group col-md-6">
+                    <label class="labelfont">Primary Location</label>
+                    <input type ="text" class="form-control" formControlName="primarylocation" rows="3" placeholder="Primary location">
+                      <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                      <span *ngIf="isSubmitted && fc().primarylocation.errors?.required" class="text-danger">Primary Location</span>
+                    
+                  </div>
+                  </div>
+                  <hr/>
+                  <div class="row mb-4">
+                    <div class="form-group col-md-6">
+                      <label class="labelfont">Destination Location</label>
+                      <input type="text" class="form-control" formControlName="destination" rows="3" placeholder="Destination">
+                        <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                        <span *ngIf="isSubmitted && fc().destination.errors?.required" class="text-danger">Destination Required</span>
+                      
+                    </div>
+                    </div>
+                    <hr/>  
+                    <div class="row mb-4">
+                      <div class="form-group col-md-6">
+                        <label class="labelfont">Arrival Time</label>
+                        <input type="time" class="form-control" formControlName="arrivaltime" rows="3">
+                          <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                          <span *ngIf="isSubmitted && fc().arrivaltime.errors?.required" class="text-danger">Arrival Time</span>
+                        
+                      </div>
+                      </div>
+                      <hr/>    
+                      <div class="row mb-4">
+                        <div class="form-group col-md-6">
+                          <label class="labelfont">Departure Time</label>
+                          <input type="time" class="form-control" formControlName="departuretime" rows="3">
+                            <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                            <span *ngIf="isSubmitted && fc().departuretime.errors?.required" class="text-danger">Departure Time</span>
+                          
+                        </div>
+                        </div>
+
+                        <div class="row mb">
+                          <div class="form-group col-md-6">
+                            <label class="labelfont">Depart Date</label>
+                            <input type="date" class="form-control" formControlName="departdate" rows="3">
+                              <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                              <span *ngIf="isSubmitted && fc().departdate.errors?.required" class="text-danger">Depart date</span>
+                             
+                          </div>
+                          </div>
+                          <div class="row mb-4">
+                            <div class="form-group col-md-6">
+                              <label class="labelfont">Return Date</label>
+                              <input type="date" class="form-control" formControlName="returndate" rows="3">
+                                <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                                <span *ngIf="isSubmitted && fc().returndate.errors?.required" class="text-danger">Return date</span>
+                              
+                            </div>
+                            </div>
+                            <div class="row mb-4">
+                              <div class="form-group col-md-6">
+                                <label class="labelfont">Passengers</label>
+                                <input type="number" class="form-control" formControlName="passengers" rows="3">
+                                  <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                                  <span *ngIf="isSubmitted && fc().passengers.errors?.required" class="text-danger">Return date</span>
+                                
+                              </div>
+                              </div>
+                              <div class="row mb-4">
+                                <div class="form-group col-md-6">
+                                  <label class="labelfont">Duration</label>
+                                  <select  class="form-control" formControlName="duration" rows="3">
+                                   <option value="02:00">02:00</option>
+                                   <option value="01:30">01:30</option>
+                                   <option value="03:00">03:00</option>
+                                   <option value="04:00">04:00</option>
+                                  </select>
+                                    <span *ngIf="isSubmitted && fc().duration.errors?.required" class="text-danger">Duration required</span>
+                                  
+                                </div>
+                                </div>
+                            <div class="row mb-4">
+                              <div class="form-group col-md-6">
+                                <label class="labelfont">Fares</label>
+                                <input type="number" class="form-control" formControlName="price" rows="3" placeholder="price">
+                                <input type="number" class="form-control" formControlName="bckagePrice" rows="3" placeholder="bckagePrice">
+                                  <span *ngIf="isSubmitted && fc().price.errors?.required" class="text-danger">Price</span>
+                                  <span *ngIf="isSubmitted && fc().bckagePrice.errors?.required" class="text-danger">Backages Price</span>
+                                
+                              </div>
+                              </div>
+                              <div class="row mb-4">
+                                <div class="form-group col-md-6">
+                                  <label class="labelfont">Hand Bags</label>
+                                  
+                                  <select class="form-control" formControlName="handbags" rows="3">
+                                    <option value="5 kgs">5 Kgs</option>
+                                    <option value="6 kgs">6 Kgs</option>
+                                    
+
+                                  </select>
+                                    <span *ngIf="isSubmitted && fc().handbags.errors?.required" class="text-danger">HandBags Required</span>
+                                  
+                                </div>
+                                </div>
+                                <div class="row mb-4">
+                                  <div class="form-group col-md-6">
+                                    <label class="labelfont">Checked Bages</label>
+                                   
+                                    <select  class="form-control" formControlName="checkedbags" rows="3">
+                                      <option value="10 kgs">10 Kgs</option>
+                                      <option value="15 kgs">15 Kgs</option>
+                                      
+  
+                                    </select>
+                                      <span *ngIf="isSubmitted && fc().checkedbags.errors?.required" class="text-danger">Checked Bags</span>
+                                    
+                                  </div>
+                                  </div>
+                        <hr/>  
+            </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="cancel"class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" *ngIf="showaddd" (click)="postdetails();postdetailstoflightlist()" class="btn btn-primary">Add</button>
+            <button type="button" *ngIf="showupdate" (click)="updatedetails()" class="btn btn-primary">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <!-- // -->
+

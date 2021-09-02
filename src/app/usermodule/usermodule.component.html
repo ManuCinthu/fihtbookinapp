@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <div class="bg">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand fw-bold" routerLinkActive="active" routerLink="/userbookId">Fly.com</a>
+                <img src="src/app/img1.jpg">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-4 mb-lg">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" [routerLink]="['userbookId']">Book Flights</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " routerLinkActive="active" [routerLink]="['managebookingId']">Manage
+                                Booking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " routerLinkActive="active" [routerLink]="['bookinghistoryId']">Booking
+                                History</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <router-outlet></router-outlet>
+
+</body>
+
+</html>

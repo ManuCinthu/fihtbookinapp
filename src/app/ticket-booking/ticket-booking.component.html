@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="d-flex justify-content-between mb-3"></div>
+  <h3>Ticket Booking Form</h3>
+  <div class="card">
+    <div class="card-header"> Ticket Booking
+
+    </div>
+    <div class="card-body">
+      <div>
+        <form [formGroup]="ticketbookingvalidateForm" (ngSubmit)="handleSubmit()" autocomplete="off">
+          <div class="row">
+            <div class="row mb-12">
+              <div class="form-group col-md-6">
+                <label class="labelfont">First Name</label>
+                <input type="text" class="form-control" formControlName="firstnameId" placeholder="First Name">
+                <!-- <span *ngIf="isSubmitted && fc().firstnameId.errors?.required" class="text-danger">First Name
+                  Required</span> -->
+              </div>
+
+              <div class="form-group col-md-6">
+                <label class="labelfont">Last Name</label>
+                <input type="text" class="form-control" formControlName="lastnameId" placeholder="Last Name">
+                <!-- <span *ngIf="isSubmitted && fc().lastnameId.errors?.required" class="text-danger">Last Name
+                  Required</span> -->
+              </div>
+
+
+            </div>
+            <hr />
+            <div class="row mb-4">
+              <div class="form-group col-md-6">
+                <label class="labelfont">Email</label>
+                <input type="email" class="form-control" formControlName="emailId" placeholder="email@mail.com">
+                <!-- <span *ngIf="isSubmitted && fc().emailId.errors?.required" class="text-danger">Email Required</span> -->
+                <span *ngIf="isSubmitted && fc().emailId.errors?.pattern" class="text-danger">Enter valid email</span>
+
+              </div>
+            </div>
+            <hr />
+            <div class="row mb-4">
+              <div class="form-group col-md-6">
+                <label class="labelfont">Number of Passengers</label>
+                <input type="number" class="form-control" formControlName="pplId" id="input3"
+                  placeholder="Number of Passenger(s)">
+                <!-- <span *ngIf="isSubmitted && fc().pplId.errors?.required" class="text-danger">Number of Passengers</span> -->
+
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="form-group col-md-6">
+                <label class="labelfont">Price selected</label>
+
+                <input type="number" class="form-control" 
+                formControlName="priceId"
+                placeholder="Price selected" 
+                /> 
+                
+            
+                <span *ngIf="isSubmitted && fc().priceId.errors?.required" class="text-danger">Number of Passengers</span> 
+
+              </div>
+            </div>
+            <hr />
+
+            <div class="form-group row">
+              <label class="labelfont col-sm-4">Meal Preferences</label>
+              <div class="col-md-6">
+                <select id="inlineFormCustomSelect">
+                  <option selected>Choose...</option>
+                  <option value="Veg">Veg</option>
+                  <option value="Non-Veg">Non-Veg</option>
+                </select>
+                <!-- <span *ngIf="isSubmitted && fc().preferencesId.errors?.required" class="text-danger">Preferences Required</span> -->
+              </div>
+            </div>
+          </div>
+          <hr />
+
+          <div class="form-group row">
+
+            <div class="col-md-6">
+              <button data-bs-toggle="modal" data-bs-target="#exampleModal"
+                [disabled]="ticketbookingvalidateForm.invalid" class="btn btn-danger">Book Ticket</button>
+
+            </div>
+            <div class="col-md-4">
+              <button class=" btn btn-danger" (click)="btnClickBack()">Back</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- <router-outlet></router-outlet> -->
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">TICKET BOOKING STATUS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        TICKET BOOKING WAS SUCCESSFUL. KINDLY PRESS OK TO SAVE THE DETAILS.
+      </div>
+      <div class="modal-footer" id="cancel">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="postdetails();btnnav()">OK</button>
+
+      </div>
+    </div>
+  </div>
+</div>

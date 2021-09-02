@@ -1,0 +1,133 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html> -->
+<div class="container">
+    <div class="d-flex justify-content-between mb-3"></div>
+        <!-- <h3>Search Flights</h3> -->
+    <div class="card">
+    <div class="card-header"> Search Flights</div>
+        <div class="card-body">
+            <div>
+            <form  [formGroup]="bookingFormvalidate"  (ngSubmit)="handleSubmit()" autocomplete="off">
+                <div class="row">
+                    <div class="row mb-4">
+                        <div class="form-group col-md-6">
+                            <label class="labelfont">Depart From</label>
+
+                            <select class="form-control" formControlName="originId" >
+                                <option>Banglore</option>
+                                <option>Chennai</option>
+                                <option>Delhi</option>
+                                <option>Mumbai</option>
+                                </select>
+                            <!-- <input type="text" class="form-control"  formControlName="originId" placeholder="origin" > -->
+                                <span *ngIf="isSubmitted && fc().originId.errors?.required" class="text-danger">Origin Required</span>
+                        </div>
+
+                       
+                            
+                        <div class="form-group col-md-6">
+                            <label class="labelfont">Going To</label>
+                            <select class="form-control" formControlName="destinationId" >
+                                <option>Banglore</option>
+                                <option>Chennai</option>
+                                <option>Delhi</option>
+                                <option>Mumbai</option>
+                                </select>
+                            <!-- <input type="text" class="form-control"  formControlName="destinationId" id="destinationId" placeholder="destination" > -->
+                                <span *ngIf="isSubmitted && fc().destinationId.errors?.required" class="text-danger">Destination Required</span>
+                            
+                        </div>
+
+                    </div>
+                    <hr/>
+                    <div class="row mb-4">
+                        <div class="form-group col-md-6">
+                            <label  class="labelfont" >Depart date</label>
+                            <input type="date" class="form-control" formControlName="fromdateId">
+                            <span *ngIf="isSubmitted && fc().fromdateId.errors?.required" class="text-danger">From Date Required</span>
+                           
+                            
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="labelfont" >Return Date</label>
+                            <input type="date" class="form-control"
+                            formControlName="returndateId" >
+                            <span *ngIf="isSubmitted && fc().returndateId.errors?.required" class="text-danger">Return Date Required</span>
+                           
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="form-group row">
+                        <label class="labelfont col-sm-4">Passenger Details</label>
+                        <div class="row mb-4">
+                            <div class="form-group col-md-6">
+                                <label class="labelfont">Adults</label>
+                                <select class="form-control" formControlName="adultIdId">
+                                    <option>One</option>
+                                    <option>Two</option>
+                                    <option>Three</option>
+                                    <option>Four</option>
+                                </select>
+                                <span *ngIf="isSubmitted && fc().adultIdId.errors?.required"
+                                class="text-danger">Adults Required</span>
+
+                            </div>
+    
+                           
+                                
+                            <div class="form-group col-md-6">
+                                <label class="labelfont">Children</label>
+                                <select class="form-control" formControlName="childrenId">
+                                    <option>One</option>
+                                    <option>Two</option>
+                                    <option>Three</option>
+                                    <option>Four</option>
+                                </select>
+                                <span *ngIf="isSubmitted && fc().childrenId.errors?.required"
+                                class="text-danger">Children value Required</span>
+
+                            </div>
+    
+                        </div>
+                       
+                     
+
+
+                      </div>
+
+                     
+                </div>
+
+
+    
+
+                <div class="form-group row">
+                    <div class="mt-3 text-center">
+                      <button type="button" 
+                      [disabled]="bookingFormvalidate.invalid"
+                       class="btn btn-danger" 
+                      (click)="btnClick()"
+                       >Search Flight -></button>
+                     
+                    </div>
+                  </div>
+            </form>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
+
+

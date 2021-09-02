@@ -1,0 +1,123 @@
+<div class="btn-group">
+    <div class="container">
+        <div class="d-flex justify-content-between mb-12"></div>
+        <!-- <div><button class="btn-sm btn-success" id="button1" (click)="btnnav()"> HOME</button></div> -->
+        <div class="card">
+            <div class="card-header"> Manage Discounts
+                <div>
+                    <button type="button" (click)="clickAddButton()" id="button1" class="btn btn-success"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Add Discounts
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div>
+                    <form [formGroup]="managediscountform" autocomplete="off">
+                        <div class="row">
+
+                            <div class="form-group col-md-12">
+
+                                <table class="labelfont table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <!-- <th>Id</th> -->
+                                            <th>Coupoun Code</th>
+                                            <th>Discount Amount</th>
+                                            <th>Total Amount</th>
+                                            <th>Actions</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let listb of discountlist">
+                                            <!-- <td>{{listb.id}}</td> -->
+                                            <td>{{listb.coupouncode}}</td>
+                                            <td>{{listb.discountamount}}</td>
+
+                                            <td>{{listb.totalamount}}</td>
+
+
+                                            <td><button class="btn btn-danger"
+                                                    (click)="deletediscounts(listb)">Delete</button> </td>
+
+                                            <td><button class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal"
+                                                    (click)="putdetails(listb)">Edit</button> </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+   
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Discount</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="adddiscountform" (ngSubmit)="handleSubmit()" autocomplete="off">
+                <div class="row">
+                    <div class="row mb-4">
+                        <div class="form-group col-md-6">
+                            <label class="labelfont">Discount Amount</label>
+
+                            <input type="number" class="form-control" formControlName="discountamount"
+                                id="input3" placeholder="Discount Amount">
+                            <span *ngIf="isSubmitted && fc().discountamount.errors?.required"
+                                class="text-danger">Discount Amonut Required</span>
+
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row mb-4">
+                        <div class="form-group col-md-6">
+                            <label class="labelfont">Coupoun code</label>
+
+                            <input type="text" class="form-control" formControlName="coupouncode" id="input3"
+                                placeholder="Coupoun Code">
+                            <span *ngIf="isSubmitted && fc().coupouncode.errors?.required"
+                                class="text-danger">Coupon code</span>
+
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row mb-4">
+                        <div class="form-group col-md-6">
+                            <label class="labelfont">Total Amount</label>
+
+                            <input type="number" class="form-control" formControlName="totalamount" id="input3"
+                                placeholder="Total Amount Required">
+                            <span *ngIf="isSubmitted && fc().totalamount.errors?.required"
+                                class="text-danger">Total Amount Required</span>
+
+                        </div>
+                    </div>
+           
+        </div>
+         </form>
+        <div class="modal-footer">
+            <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" *ngIf="showaddd" (click)="postdetails()" class="btn btn-primary">Add</button>
+            <button type="button" *ngIf="showupdate" (click)="updatedetails()"
+                class="btn btn-primary">Update</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,35 @@
+input[type="radio"] {
+    margin-right: 0;
+  }
+
+  .container .navbar-brand {
+    font-family: 'Times New Roman', Times, serif;
+    color: chocolate;
+    font-size: 100px
+
+  }
+
+
+  .bg {
+    /* The image used */
+    background-image: url("../bg.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* position:fixed */
+  }
+
+  .bg .nav-link{
+
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: burlywood;
+  }
+
+
+ .bg .nav-link:hover{
+   color:coral;
+ }

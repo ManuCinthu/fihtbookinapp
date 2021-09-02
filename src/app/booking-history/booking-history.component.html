@@ -1,0 +1,155 @@
+
+<div class="container">
+
+    <div class="d-flex justify-content-between mb-3"></div>
+    <div class="card">
+        <div class="card-header"> User Booking History</div>
+     
+        
+    <div class="card-body">
+
+            <form [formGroup]="bookinghistoryForm" autocomplete="off">
+                <div class="row">
+                        <div class="form-group col-md-12">
+                            <table class=" labelfont table table-hover" >
+                                <thead>
+                                    <tr>
+                                       
+                                        <th>Flight Name</th>
+                                        <th>Flight Number</th>
+                                        <th>From Location</th>
+                                        <th>To Locaton</th>
+                                        <th>Depart Date</th>
+                                        
+                                        <th></th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let listb of bookinghistory">
+                                       
+                                        <td>{{listb.flightnames}}</td>
+                                        <td>{{listb.flightnumber}}</td>
+                                       
+                                        <td>{{listb.departfrom}}</td>
+                                        <td>{{listb.gotolocation}}</td>
+                                        <td>{{listb.departdate}}</td>
+                                        <td><button class="btn btn-success"
+
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal" 
+                                            (click)="putdetails(listb)" 
+                                            >View Details</button>  </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">View Booking Details</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="bookinghistoryvalidateForm"  (ngSubmit)="handleSubmit()" autocomplete="off">
+            <div class="row">
+              <div class="row mb-4">
+              <div class="form-group col-md-6">
+                  <label class="labelfont">Flight Name</label>
+                 
+                    <input type="text" class="form-control" formControlName="flightnames" id="input3" placeholder="Flight Name">
+                    <span *ngIf="isSubmitted && fc().flightnames.errors?.required" class="text-danger">Flight Name </span>
+                  
+                </div>
+              </div>
+                
+                <hr/>
+                <div class="row mb-4">
+                <div class="form-group col-md-6">
+                  <label class="labelfont">Flight Number</label>
+                 
+                    <input type="text" class="form-control" formControlName="flightnumber" id="input3" placeholder="Flight Number(s)">
+                    <span *ngIf="isSubmitted && fc().flightnumber.errors?.required" class="text-danger">Flight Number Required</span>
+                 
+                </div>
+                </div>
+                <hr/>
+                <div class="row mb-4">
+                  <div class="form-group col-md-6">
+                    <label class="labelfont">Depart Part</label>
+                   
+                      <input type="text" class="form-control" formControlName="departfrom" id="input3" placeholder="Depart Part">
+                      <span *ngIf="isSubmitted && fc().departfrom.errors?.required" class="text-danger">Depart Part Required</span>
+                   
+                  </div>
+                  </div>
+                <div class="row mb-4">
+                <div class="form-group col-md-6">
+                  <label class="labelfont">Go To</label>
+                  <input type ="text" class="form-control" formControlName="gotolocation" rows="3" placeholder="Go To">
+                    <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                    <span *ngIf="isSubmitted && fc().gotolocation.errors?.required" class="text-danger">Go To</span>
+                  
+                </div>
+                </div>
+                <hr/>
+                <!-- <div class="row mb-4">
+                  <div class="form-group col-md-6">
+                    <label class="labelfont">Arrival Time</label>
+                    <input type="text" class="form-control" formControlName="arrivaltime" rows="3" placeholder="Arrival Time">
+                      <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                      <!-- <span *ngIf="isSubmitted && fc().arrivaltime.errors?.required" class="text-danger">Arrival Time</span> -->
+                    
+                  <!-- </div> -->
+                  <!-- </div> -->
+                  <!-- <hr/>   --> 
+                  <!-- <div class="row mb-4">
+                    <div class="form-group col-md-6">
+                      <label class="labelfont">Departure time</label>
+                      <input type="time" class="form-control" formControlName="departuretime" rows="3">
+                         <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                        <!-- <span *ngIf="isSubmitted && fc().departuretime.errors?.required" class="text-danger">Departure time</span> -->
+                      
+                    <!-- </div> -->
+                    <!-- </div> --> 
+                    <!-- <hr/>     -->
+                    <div class="row mb-4">
+                      <div class="form-group col-md-6">
+                        <label class="labelfont">Return date</label>
+                        <input type="text" class="form-control" formControlName="returndate" rows="3">
+                          <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                          <span *ngIf="isSubmitted && fc().returndate.errors?.required" class="text-danger">Return date</span>
+                        
+                      </div>
+                      </div>
+                      <hr/> 
+                      <div class="row mb-4">
+                        <div class="form-group col-md-6">
+                          <label class="labelfont">Depart date</label>
+                          <input type="text" class="form-control" formControlName="departdate" rows="3">
+                            <!-- <input type="text-field" class="form-control" formControlName="address" id="input3" placeholder="Contact Address"> -->
+                            <span *ngIf="isSubmitted && fc().departdate.errors?.required" class="text-danger">Depart date</span>
+                          
+                        </div>
+                        </div> 
+          </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel"class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <!-- <button type="button" *ngIf="showaddd" (click)="postdetails()" class="btn btn-primary">Add</button> -->
+          <!-- <button type="button" *ngIf="showupdate" (click)="updatedetails()" class="btn btn-primary">Update</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
